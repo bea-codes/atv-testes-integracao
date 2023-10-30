@@ -18,5 +18,11 @@
             <artifactId>mockito-core</artifactId>
             <version>5.6.0</version>
         </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+        </dependency>
     </dependencies>
 </project>
