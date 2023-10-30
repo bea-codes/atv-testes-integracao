@@ -1,7 +1,7 @@
-# Sistema de ... Clínica Veterinária
+# Sistema de ... Petshop
 
 serviços -> Bea 
-pacientes -> Davi
+clientes -> Davi
 funcionarios -> Suelen
 produtos 
 agendamento
