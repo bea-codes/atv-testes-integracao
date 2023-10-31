@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+
+import com.example.funcionários.Cargo;
+import com.example.funcionários.Funcionario;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +16,7 @@ public class FuncionarioTeste {
 
     @BeforeEach
     void setUp() {
-         
+
         funcionario = new Funcionario("João", cargoMock, 1000.0);
     }
 
