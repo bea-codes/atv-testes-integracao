@@ -15,7 +15,7 @@ public class Carrinho  {
         carrinho.remove(produto);
     }
 
-    public void produtosNoCarrinho() {
+    public Produto[] produtosNoCarrinho() {
         Produto[] produtos = new Produto[carrinho.size()];
         carrinho.toArray(produtos);
         return produtos;
