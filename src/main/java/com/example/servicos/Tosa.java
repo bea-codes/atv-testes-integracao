@@ -1,13 +1,14 @@
 package com.example.servicos;
 
 import com.example.cliente.Porte;
+import com.example.servicos.TipoDeTosa;
 
 public class Tosa {
 	private TipoDeTosa TipoDeTosa;
 	private Porte porteDoAnimal;
 	private double preco = 35.0;
 	
-	public Tosa(com.example.servicos.TipoDeTosa tipoDeTosa, Porte porteDoAnimal) {
+	public Tosa(TipoDeTosa tipoDeTosa, Porte porteDoAnimal) {
 		TipoDeTosa = tipoDeTosa;
 		this.porteDoAnimal = porteDoAnimal;
 	}
