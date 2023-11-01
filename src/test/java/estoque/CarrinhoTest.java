@@ -1,13 +1,16 @@
+package estoque;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.example.estoque.Carrinho;
+import com.example.estoque.Produto;
 
 public class CarrinhoTest{
     private Carrinho carrinho;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         carrinho = new Carrinho();
     }
@@ -20,7 +23,7 @@ public class CarrinhoTest{
         carrinho.adicionarProduto(racao);
         carrinho.adicionarProduto(coleira);
 
-        assertEquals(2, carrinho.obterProdutosNoCarrinho().length);
+        assertEquals(2, carrinho.produtosNoCarrinho().length);
     }
 
     @Test
@@ -31,7 +34,7 @@ public class CarrinhoTest{
         carrinho.adicionarProduto(racao);
         carrinho.adicionarProduto(coleira);
 
-        double precoTotal = carrinho.calcularPrecoTotal();
+        double precoTotal = carrinho.precoTotal();
         assertEquals(15.0, precoTotal, 0.01);
     }
 }
