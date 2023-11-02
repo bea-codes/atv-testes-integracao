@@ -1,3 +1,5 @@
+package Atendimento;
+
 import org.junit.Test;
 import com.example.atendimento.Atendimento;
 import com.example.atendimento.AtendimentoService;
