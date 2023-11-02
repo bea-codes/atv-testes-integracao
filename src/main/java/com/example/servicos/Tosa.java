@@ -3,52 +3,55 @@ package com.example.servicos;
 import com.example.cliente.Porte;
 
 public class Tosa {
-	private TipoDeTosa TipoDeTosa;
+	private TipoDeTosa tipoDeTosa;
 	private Porte porteDoAnimal;
 	private double preco = 35.0;
 	
 	public Tosa(TipoDeTosa tipoDeTosa, Porte porteDoAnimal) {
-		TipoDeTosa = tipoDeTosa;
+		this.tipoDeTosa = tipoDeTosa;
 		this.porteDoAnimal = porteDoAnimal;
 	}
 
-	public double calcularPreco(){
+	public double calcularPreco(TipoDeTosa tipoDeTosa, Porte porteDoAnimal){
 		double precoTotal = getPreco();
+		double taxaDePelo = 0;
+		double taxaTipoTosa = 0;
 
-		switch (TipoDeTosa) {
+		switch (tipoDeTosa) {
 			case NA_MAQUINA:
-				precoTotal =+ 10.0;
+				taxaTipoTosa =+ 10.0;
 				break;
 			case NA_TESOURA:
-				precoTotal =+ 25.0;
+				taxaTipoTosa =+ 25.0;
 				break;
 			default:
 				break;
 		}
 
-			switch (porteDoAnimal) {
-			case GRANDE:
-				precoTotal =+ 20.0;
-				break;
-			case MEDIO:
-				precoTotal =+ 15.0;
-				break;
-			case PEQUENO:
-				precoTotal =+ 10.0;
-				break;
-			case MINI:
-				precoTotal =+ 0.0;
-				break;
-			default:
-				break;
+		switch (porteDoAnimal) {
+		case GRANDE:
+			taxaDePelo =+ 20.0;
+			break;
+		case MEDIO:
+			taxaDePelo =+ 15.0;
+			break;
+		case PEQUENO:
+			taxaDePelo =+ 10.0;
+			break;
+		case MINI:
+			taxaDePelo =+ 0.0;
+			break;
+		default:
+			break;
 		}
+
+		precoTotal = precoTotal + taxaDePelo +taxaTipoTosa;
 
 		return precoTotal;
 	}
 
-
 	public TipoDeTosa getTipoDeTosa() {
-		return TipoDeTosa;
+		return tipoDeTosa;
 	}
 
 	public Porte getPorteDoAnimal() {
@@ -60,7 +63,7 @@ public class Tosa {
 	}
 
 	public void setTipoDeTosa(TipoDeTosa tipoDeTosa) {
-		TipoDeTosa = tipoDeTosa;
+		this.tipoDeTosa = tipoDeTosa;
 	}
 
 	public void setPorteDoAnimal(Porte porteDoAnimal) {
@@ -71,6 +74,8 @@ public class Tosa {
 		this.preco = preco;
 	}
 
+
+	
 	
 
 }

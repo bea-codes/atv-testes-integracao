@@ -14,21 +14,23 @@ public class Banho {
 
 
 
-	public double calcularPreco(){
+	public double calcularPreco(TipoDeBanho tipoDeBanho, Porte porteDoAnimal){
 		double precoTotal = getPreco();
+		double taxaDePorte = 0;
+		double taxaDePelo =  0;
 
 		switch (porteDoAnimal) {
 			case GRANDE:
-				precoTotal =+ 20.0;
+				taxaDePorte =+ 20.0;
 				break;
 			case MEDIO:
-				precoTotal =+ 15.0;
+				taxaDePorte =+ 15.0;
 				break;
 			case PEQUENO:
-				precoTotal =+ 10.0;
+				taxaDePorte =+ 10.0;
 				break;
 			case MINI:
-				precoTotal =+ 0.0;
+				taxaDePorte =+ 0.0;
 				break;
 			default:
 				break;
@@ -36,14 +38,16 @@ public class Banho {
 
 		switch (tipoDeBanho) {
 			case PELOS_BRANCOS:
-				precoTotal =+ 10.0;
+				taxaDePelo =+ 10.0;
 				break;
 			case PELOS_ESCUROS:
-				precoTotal =+ 5.0;
+				taxaDePelo =+ 5.0;
 				break;
 			default:
 				break;
 		}
+
+		precoTotal = precoTotal + taxaDePelo + taxaDePorte;
 		
 		return precoTotal;
 

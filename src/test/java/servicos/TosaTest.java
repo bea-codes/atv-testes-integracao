@@ -1,37 +1,32 @@
 package servicos;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
-import org.mockito.Mock;
+import org.junit.Test;
 
 import com.example.cliente.Porte;
 import com.example.servicos.TipoDeTosa;
 import com.example.servicos.Tosa;
 
 public class TosaTest {
-	private Tosa tosa;
-
-	@Mock
-	private TipoDeTosa tipoDeTosaMock;
-
-	@Mock
-	private Porte porteDoAnimalMock;
-
-	@Before
-	void setUp(){
-		tosa = new Tosa(tipoDeTosaMock, porteDoAnimalMock);
-	}
+	// private Tosa tosa;
 
 	@Test
-	void testCalcularPrecoDaTosa(){
-		when(tipoDeTosaMock.equals(TipoDeTosa.NA_MAQUINA)).thenReturn(true);
+	public void testCalcularPrecoDaTosa(){
 
-		when(porteDoAnimalMock.equals(Porte.MEDIO)).thenReturn(true);
+		// TipoDeTosa tipoDeTosaMock = mock(TipoDeTosa.class);
+		// Porte porteDoAnimalMock = mock(Porte.class);
+		Tosa tosa = mock(Tosa.class);
 
-		double precoCalculado = tosa.calcularPreco();
+		when(tosa.getPorteDoAnimal()).thenReturn(Porte.GRANDE);
+		when(tosa.getTipoDeTosa()).thenReturn(TipoDeTosa.NA_MAQUINA);
 
-		assertEquals(60, precoCalculado, 0.05);
+		when(tosa.calcularPreco(TipoDeTosa.NA_MAQUINA, Porte.GRANDE)).thenCallRealMethod();
+
+		double precoCalculado = tosa.calcularPreco(TipoDeTosa.NA_MAQUINA, Porte.GRANDE);
+
+		assertEquals(65, precoCalculado, 0.05);
 	}
 }

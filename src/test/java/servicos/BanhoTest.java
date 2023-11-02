@@ -1,9 +1,9 @@
 package servicos;
 
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
-import org.mockito.Mock;
+import org.junit.Test;
 
 import com.example.cliente.Porte;
 import com.example.servicos.Banho;
@@ -12,24 +12,19 @@ import static org.junit.Assert.assertEquals;
 
 
 public class BanhoTest {
-	private Banho banho;
-
-	@Mock
-	private TipoDeBanho tipoDeBanhoMock;
-
-	@Mock
-	private Porte porteMock;
-
-	@Before
-	void setUp(){
-		banho = new Banho(tipoDeBanhoMock, porteMock);
-	}
 
 	@Test
-	void testCalcularPrecoDoBanho(){
-		when(porteMock.equals(Porte.GRANDE)).thenReturn(true);
-		when(tipoDeBanhoMock.equals(TipoDeBanho.PELOS_BRANCOS)).thenReturn(true);
-		double precoCalculado = banho.calcularPreco();
-		assertEquals(65.0, precoCalculado, 0.05);
+	public void testCalcularPrecoDoBanho(){
+		// Porte porteMock = mock(Porte.class);
+		// TipoDeBanho tipoDeBanhoMock = mock(TipoDeBanho.class);
+		Banho banhoMock = mock(Banho.class);
+
+		when(banhoMock.getPorteDoAnimal()).thenReturn(Porte.MEDIO);
+		when(banhoMock.getTipoDeBanho()).thenReturn(TipoDeBanho.PELOS_BRANCOS);
+		
+		when(banhoMock.calcularPreco(TipoDeBanho.PELOS_BRANCOS, Porte.MEDIO)).thenCallRealMethod();
+
+		double precoCalculado = banhoMock.calcularPreco(TipoDeBanho.PELOS_BRANCOS, Porte.MEDIO);
+		assertEquals(60.0, precoCalculado, 0.05);
 	}
 }
