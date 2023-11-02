@@ -35,9 +35,9 @@ public class Funcionario {
             this.salario = salario;
         }
 //Calcular bonus mensal baseado no cargo
-        public double calcularSalarioBonus() {
+        public double calcularSalarioBonus(Cargo cargo) {
 
-            double salarioCalculado = salario;
+            double salarioCalculado = getSalario();
 
             switch (cargo) {
                 case RECEPCIONISTA:
