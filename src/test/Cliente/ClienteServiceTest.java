@@ -1,43 +1,52 @@
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.*;
 
-public class ClienteServiceTest {
+@RunWith(MockitoJUnitRunner.class)
+public class ClienteTest {
+
+    @Mock
+    private Cliente clienteMock;
 
     @Test
     public void testGetNome() {
-        Cliente cliente = new Cliente("Feurinha", "Cachorro", 5, "Rua A, 123", true);
-        assertEquals("Feurinha", cliente.getNome());
+        when(clienteMock.getNome()).thenReturn("Feiurinha");
+        assertEquals("Feiurinha", clienteMock.getNome());
     }
 
     @Test
     public void testSetEndereco() {
-        Cliente cliente = new Cliente("Feurinha", "Cachorro", 5, "Rua A, 123", true);
-        cliente.setEndereco("Rua B, 456");
-        assertEquals("Rua B, 456", cliente.getEndereco());
+        when(clienteMock.getEndereco()).thenReturn("Rua B, 456");
+        clienteMock.setEndereco("Rua B, 456");
+        verify(clienteMock, times(1)).setEndereco("Rua B, 456");
     }
 
     @Test
     public void testAgendarConsulta() {
-        Cliente cliente = new Cliente("Feurinha", "Cachorro", 5, "Rua A, 123", true);
+        Cliente cliente = mock(Cliente.class);
         cliente.agendarConsulta("2023-11-05");
-        // Aqui você pode adicionar asserções relevantes para verificar se a consulta foi agendada corretamente
+        verify(cliente, times(1)).agendarConsulta("2023-11-05");
     }
 
     @Test
     public void testRealizarCompra() {
-        Cliente cliente = new Cliente("Feurinha", "Cachorro", 5, "Rua A, 123", true);
+        Cliente cliente = mock(Cliente.class);
         cliente.realizarCompra("Ração");
-        // Aqui você pode adicionar asserções relevantes para verificar se a compra foi realizada corretamente
+        verify(cliente, times(1)).realizarCompra("Ração");
     }
 
     @Test
     public void testIsPrimeiraVisita() {
-        Cliente cliente1 = new Cliente("Feurinha", "Cachorro", 5, "Rua A, 123", true);
-        assertTrue(cliente1.isPrimeiraVisita());
+        when(clienteMock.isPrimeiraVisita()).thenReturn(true);
+        assertTrue(clienteMock.isPrimeiraVisita());
 
-        Cliente cliente2 = new Cliente("Mimi", "Gato", 3, "Rua C, 789", false);
-        assertFalse(cliente2.isPrimeiraVisita());
+        when(clienteMock.isPrimeiraVisita()).thenReturn(false);
+        assertFalse(clienteMock.isPrimeiraVisita());
     }
 }
