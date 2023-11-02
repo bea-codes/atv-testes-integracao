@@ -1,7 +1,6 @@
 package com.example.servicos;
 
 import com.example.cliente.Porte;
-import com.example.servicos.TipoDeTosa;
 
 public class Tosa {
 	private TipoDeTosa TipoDeTosa;
