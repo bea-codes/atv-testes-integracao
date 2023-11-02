@@ -1,16 +1,14 @@
+package servicos;
+
 import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
 import org.mockito.Mock;
 
 import com.example.cliente.Porte;
 import com.example.servicos.Banho;
 import com.example.servicos.TipoDeBanho;
-import com.example.servicos.TipoDeTosa;
-
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class BanhoTest {
@@ -22,7 +20,7 @@ public class BanhoTest {
 	@Mock
 	private Porte porteMock;
 
-	@BeforeEach
+	@Before
 	void setUp(){
 		banho = new Banho(tipoDeBanhoMock, porteMock);
 	}

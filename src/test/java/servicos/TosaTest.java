@@ -1,6 +1,9 @@
+package servicos;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import org.junit.Before;
 import org.mockito.Mock;
 
 import com.example.cliente.Porte;
@@ -16,7 +19,7 @@ public class TosaTest {
 	@Mock
 	private Porte porteDoAnimalMock;
 
-	@BeforeEach
+	@Before
 	void setUp(){
 		tosa = new Tosa(tipoDeTosaMock, porteDoAnimalMock);
 	}

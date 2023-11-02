@@ -1,6 +1,9 @@
-package com.example.funcionários;
+package funcionario;
 
 import org.junit.Test;
+
+import com.example.funcionários.Cargo;
+import com.example.funcionários.Funcionario;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

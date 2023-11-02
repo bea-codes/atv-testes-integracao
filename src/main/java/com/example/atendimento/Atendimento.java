@@ -1,51 +1,32 @@
 package com.example.atendimento;
+import java.util.Date;  
+
 
 public class Atendimento {
-	private String dataHora;
-    private double precoServico;
-    private String tipoDeServico;
-    private String cliente;
-
-
+    private Date data;
+    private String tipoAtendimento;
     
-    public Atendimento(String dataHora, double precoServico, String tipoDeServico, String cliente) {
-        this.dataHora = dataHora;
-        this.precoServico = precoServico;
-        this.tipoDeServico = tipoDeServico;
-        this.cliente = cliente;
+    public Atendimento(Date data, String tipoAtendimento) {
+        this.data = data;
+        this.tipoAtendimento = tipoAtendimento;
     }
 
-    
-    public String getDataHora() {
-        return dataHora;
+    public Date getData() {
+        return data;
     }
 
-    public void setDataHora(String dataHora) {
-        this.dataHora = dataHora;
+    public void setData(Date data) {
+        this.data = data;
     }
 
-    public double getPrecoServico() {
-        return precoServico;
+    public String getTipoAtendimento() {
+        return tipoAtendimento;
     }
 
-    public void setPrecoServico(double precoServico) {
-        this.precoServico = precoServico;
+    public void setTipoAtendimento(String tipoAtendimento) {
+        this.tipoAtendimento = tipoAtendimento;
     }
 
-    public String getTipoDeServico() {
-        return tipoDeServico;
-    }
-
-    public void setTipoDeServico(String tipoDeServico) {
-        this.tipoDeServico = tipoDeServico;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
+   
 }
 
