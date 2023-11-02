@@ -1,3 +1,5 @@
+package Cliente;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -24,7 +26,6 @@ public class ClienteTest {
 
     @Test
     public void testSetEndereco() {
-        when(clienteMock.getEndereco()).thenReturn("Rua B, 456");
         clienteMock.setEndereco("Rua B, 456");
         verify(clienteMock, times(1)).setEndereco("Rua B, 456");
     }
