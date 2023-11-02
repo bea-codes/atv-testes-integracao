@@ -5,11 +5,10 @@
 /workspaces/atv-testes-integracao/src/main/java/com/example/funcionários/Funcionario.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/servicos/TipoDeBanho.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/servicos/Banho.java
-/workspaces/atv-testes-integracao/src/main/java/com/example/cliente/Responsavel.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/servicos/TipoDeTosa.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/cliente/Porte.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/atendimento/Atendimento.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/cliente/Cliente.java
+/workspaces/atv-testes-integracao/src/main/java/com/example/atendimento/AtendimentoService.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/servicos/Tosa.java
-/workspaces/atv-testes-integracao/src/main/java/com/example/cliente/Especie.java
 /workspaces/atv-testes-integracao/src/main/java/com/example/estoque/Carrinho.java

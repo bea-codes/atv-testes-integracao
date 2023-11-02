@@ -1,5 +1,4 @@
 package com.example.estoque;
-import com.example.estoque.Produto;
 import java.util.ArrayList;
 import java.util.List;
 

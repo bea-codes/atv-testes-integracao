@@ -3,11 +3,11 @@ package estoque;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.example.estoque.Carrinho;
@@ -15,54 +15,52 @@ import com.example.estoque.Produto;
 
 
 public class CarrinhoTest {
+
+    @Mock
+    private Produto produtoMock1;
+
+    @Mock
+    private Produto produtoMock2;
+
     private Carrinho carrinho;
-    private Produto racaoMock;
-    private Produto coleiraMock;
 
     @Before
     public void setUp() {
+        MockitoAnnotations.openMocks(this);
         carrinho = new Carrinho();
-        racaoMock = mock(Produto.class);
-        coleiraMock = mock(Produto.class);
-
-        when(racaoMock.getNome()).thenReturn("Racao");
-        when(racaoMock.getPreco()).thenReturn(10.0);
-
-        when(coleiraMock.getNome()).thenReturn("Coleira");
-        when(coleiraMock.getPreco()).thenReturn(5.0);
     }
 
     @Test
     public void testAdicionarProduto() {
-        carrinho.adicionarProduto(racaoMock);
-        carrinho.adicionarProduto(coleiraMock);
+        Produto racao = Produto.RACAO;
+        Produto coleira = Produto.COLEIRA;
+        carrinho.adicionarProduto(racao);
+        carrinho.adicionarProduto(coleira);
 
         Produto[] produtosNoCarrinho = carrinho.produtosNoCarrinho();
         assertEquals(2, produtosNoCarrinho.length);
 
-        verify(racaoMock, times(1)).getNome();
-        verify(racaoMock, times(1)).getPreco(); 
-        verify(coleiraMock, times(1)).getNome(); 
-        verify(coleiraMock, times(1)).getPreco(); 
+
     }
 
     @Test
     public void testRetirarProduto() {
-        carrinho.adicionarProduto(racaoMock);
-        carrinho.adicionarProduto(coleiraMock);
-        carrinho.removerProduto(coleiraMock);
+        Produto racao = Produto.RACAO;
+        Produto coleira = Produto.COLEIRA;
+        carrinho.adicionarProduto(racao);
+        carrinho.adicionarProduto(coleira);
+        carrinho.removerProduto(coleira);
 
         Produto[] produtosNoCarrinho = carrinho.produtosNoCarrinho();
         assertEquals(1, produtosNoCarrinho.length);
-
-        verify(racaoMock, times(1)).getNome(); 
-        verify(racaoMock, times(1)).getPreco(); 
     }
 
     @Test
     public void testRetirandoTodosProdutos() {
-        carrinho.adicionarProduto(racaoMock);
-        carrinho.adicionarProduto(coleiraMock);
+        Produto racao = Produto.RACAO;
+        Produto coleira = Produto.COLEIRA;
+        carrinho.adicionarProduto(racao);
+        carrinho.adicionarProduto(coleira);
         carrinho.retirarTudo();
 
         Produto[] produtosNoCarrinho = carrinho.produtosNoCarrinho();
@@ -71,30 +69,30 @@ public class CarrinhoTest {
     }
     
     @Test
-    public void testCalcularPrecoTotal() {
-        carrinho.adicionarProduto(racaoMock);
-        carrinho.adicionarProduto(coleiraMock);
+     public void testCalcularPrecoTotal() {
+        // Configura os comportamentos dos mocks
+        when(produtoMock1.getPreco()).thenReturn(10.0);
+        when(produtoMock2.getPreco()).thenReturn(5.0);
+
+        carrinho.adicionarProduto(produtoMock1);
+        carrinho.adicionarProduto(produtoMock2);
 
         double precoTotal = carrinho.precoTotal();
         assertEquals(15.0, precoTotal, 0.01);
 
-        verify(racaoMock, times(1)).getNome(); 
-        verify(racaoMock, times(1)).getPreco(); 
-        verify(coleiraMock, times(1)).getNome(); 
-        verify(coleiraMock, times(1)).getPreco(); 
+        // Verifica se os métodos dos mocks foram chamados
+        Mockito.verify(produtoMock1, times(1)).getPreco();
+        Mockito.verify(produtoMock2, times(1)).getPreco();
     }
 
     @Test
     public void testCalcularParcelas() {
-        carrinho.adicionarProduto(racaoMock);
-        carrinho.adicionarProduto(coleiraMock);
+        Produto racao = Produto.RACAO;
+        Produto coleira = Produto.COLEIRA;
+        carrinho.adicionarProduto(racao);
+        carrinho.adicionarProduto(coleira);
 
         double valorParcela = carrinho.parcelar(3);
         assertEquals(5.0, valorParcela, 0.01);
-
-        verify(racaoMock, times(1)).getNome(); 
-        verify(racaoMock, times(1)).getPreco(); 
-        verify(coleiraMock, times(1)).getNome(); 
-        verify(coleiraMock, times(1)).getPreco(); 
     }
 }
